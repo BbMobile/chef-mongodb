@@ -17,6 +17,7 @@
 # limitations under the License.
 #
 
+default[:mongodb][:auth] = false
 default[:mongodb][:keyfile] = nil
 default[:mongodb][:dbpath] = "/var/lib/mongodb"
 default[:mongodb][:logpath] = "/var/log/mongodb"
