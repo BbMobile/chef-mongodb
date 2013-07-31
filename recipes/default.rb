@@ -19,6 +19,9 @@
 # limitations under the License.
 #
 
+require 'openssl'
+node.set['mongodb']['keyfile'] = ::OpenSSL::Random.random_bytes(753).gsub(/\W/, '')
+
 package node[:mongodb][:package_name] do
   action :install
   version node[:mongodb][:package_version]
@@ -28,11 +31,6 @@ chef_gem 'bson_ext'
 chef_gem 'mongo'
 
 if node.recipe?("mongodb::default") or node.recipe?("mongodb")
-
-  unless node['mongodb']['keyfile']
-    require 'openssl'
-    node.set['mongodb']['keyfile'] = ::OpenSSL::Random.random_bytes(753).gsub(/\W/, '')
-  end
 
   # configure default instance
   mongodb_instance "mongodb" do
