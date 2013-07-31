@@ -14,7 +14,7 @@ recipe "mongodb::replicaset", "Installs and configures a mongodb replicaset"
 
 depends "apt"
 depends "yum"
-depends "firewall"
+#depends "firewall"
 depends "build-essential"
 
 %w{ ubuntu debian freebsd centos redhat fedora amazon scientific}.each do |os|
